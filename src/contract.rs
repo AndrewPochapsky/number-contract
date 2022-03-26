@@ -1,7 +1,7 @@
 use crate::{
     error::ContractError,
     msg::{ExecuteMsg, InstantiateMsg, QueryMsg},
-    state::{NUMBERS, OWNER},
+    state::NUMBERS,
 };
 #[cfg(not(feature = "library"))]
 use cosmwasm_std::entry_point;
@@ -16,8 +16,6 @@ pub fn instantiate(
     info: MessageInfo,
     _msg: InstantiateMsg,
 ) -> Result<Response, ContractError> {
-    OWNER.save(deps.storage, &info.sender.to_string())?;
-    OWNER.remove(deps.storage);
     Ok(Response::new())
 }
 
